@@ -1,4 +1,3 @@
-# 340-assignment-3
 
 # Dragon Ball Character API
 
