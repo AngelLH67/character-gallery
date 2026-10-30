@@ -27,6 +27,8 @@ public class TvCharacter {
 
     private String role;
 
+    private String imageUrl;
+
     public TvCharacter() {
     }
 
@@ -76,5 +78,13 @@ public class TvCharacter {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
