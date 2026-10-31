@@ -1,66 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<#import "layout.ftlh" as layout>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goku - Character Details</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <@layout.page title="${character.name} - Character Details">
 
-<body>
+        <main class="details-page">
 
-    <nav>
-        <h2>Dragon Ball Gallery</h2>
+            <h1>${character.name}</h1>
 
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="details.html">Details</a>
-            <a href="about.html">About</a>
-            <a href="new-character-form.html">Add a Character</a>
-        </div>
-    </nav>
+            <#if character.imageUrl?? && character.imageUrl?has_content>
+                <img class="details-image" src="${character.imageUrl}" alt="${character.name}">
+                <#else>
+                    <img class="details-image" src="/images/placeholder.svg" alt="No image available">
+            </#if>
 
-    <main class="details-page">
-        <h1>Goku</h1> 
+            <section>
+                <h2>Character Information</h2>
 
-        <img class="details-image" src="images/goku.png" alt="Goku">
-        
-        <section>
-            <h2>Character Information</h2>
-            <p><strong>Full Name:</strong> Son Goku</p>
-            <p><strong>Species:</strong> Saiyan</p>
-            <p><strong>Universe:</strong> Dragon Ball (Universe 7)</p>
-            <p><strong>Role:</strong> Hero and Martial Artist</p>
-            <h2>Backstory</h2>
-            <p> Born on Planet Vegeta as Kakarot, he was sent to Earth as an infant just before his home planet's
-                destruction
-                by Frieza. Originally a violent and difficult baby, a severe head trauma from falling into a ravine
-                erased his
-                aggressive Saiyan instincts, turning him into a kind, pure-hearted defender of Earth.
-            </p>
-            <h2>Abilities</h2>
-            <ul>
-                <li>Super Saiyan transformations</li>
-                <li>Kamehameha</li>
-                <li>Instant Transmission</li>
-                <li>High speed and strength</li>
-                <li>Advanced martial arts skills</li>
-            </ul>
-            <h2>Personality</h2>
-            <p> Goku is cheerful, energetic, and always looking for a new challenge. He enjoys training and fighting
-                strong opponents, but he also cares deeply about his friends and family. </p>
-            <h2>First Appearance</h2>
-            <p> Goku first appeared in the original Dragon Ball manga and anime series. </p>
-        </section>
+                <p><strong>Name:</strong> ${character.name}</p>
+                <p><strong>Species:</strong> ${character.species!''}</p>
+                <p><strong>Universe:</strong> ${character.universe!''}</p>
+                <p><strong>Role:</strong> ${character.role!''}</p>
 
-    </main>
+                <h2>Backstory</h2>
 
-    <footer>
-        <p>&copy; 2026 Dragon Ball Character Gallery</p>
-    </footer>
+                <#if character.characterId==3>
+                    <p>Goku, originally named Kakarot, was born on Planet Vegeta as a member of the Saiyan race. Sent to
+                        Earth as a baby to conquer it, he hit his head on a waterfall giving him memory loss. He was raised by Grandpa 
+                        Gohan and grew up to become one of the planet's greatest protectors. Throughout his journey, Goku has faced countless 
+                        foes, made lifelong friends, and constantly pushed himself to reach new levels of strength.</p>
+                    <#else>
+                        <p>${character.description!''}</p>
+                </#if>
 
+                <#if character.characterId==3>
+                    <h2>Abilities</h2>
+                    <ul>
+                        <li>Kamehameha</li>
+                        <li>Instant Transmission</li>
+                        <li>Spirit Bomb</li>
+                        <li>Super Saiyan transformations</li>
+                        <li>Kaoiken</li>
+                        <li>Ultra Instinct</li>
+                    </ul>
 
-</body>
+                    <h2>First Appearance</h2>
+                    <ul>
+                        <li>Dragon Ball Chapter 1 (1984)</li>
+                        <li>Created by Akira Toriyama</li>
+                    </ul>
+                </#if>
+            </section>
 
-</html>
+            <p><a class="button" href="/">Back to Gallery</a></p>
+
+        </main>
+
+    </@layout.page>
