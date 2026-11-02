@@ -24,8 +24,10 @@
 
                 <#if character.characterId==3>
                     <p>Goku, originally named Kakarot, was born on Planet Vegeta as a member of the Saiyan race. Sent to
-                        Earth as a baby to conquer it, he hit his head on a waterfall giving him memory loss. He was raised by Grandpa 
-                        Gohan and grew up to become one of the planet's greatest protectors. Throughout his journey, Goku has faced countless 
+                        Earth as a baby to conquer it, he hit his head on a waterfall giving him memory loss. He was
+                        raised by Grandpa
+                        Gohan and grew up to become one of the planet's greatest protectors. Throughout his journey,
+                        Goku has faced countless
                         foes, made lifelong friends, and constantly pushed himself to reach new levels of strength.</p>
                     <#else>
                         <p>${character.description!''}</p>
@@ -50,7 +52,10 @@
                 </#if>
             </section>
 
-            <p><a class="button" href="/">Back to Gallery</a></p>
+            <div class="details-buttons">
+                <a class="button" href="/characters/${character.characterId}/edit">Edit Character</a>
+                <a class="button" href="/">Back to Gallery</a>
+            </div>
 
         </main>
 

@@ -94,6 +94,20 @@ header p {
     text-align: center;
 }
 
+.details-buttons a {
+    display: inline-block;
+    background-color: #de1313;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.details-buttons a:hover {
+    background-color: #b50f0f;
+}
+
 footer {
     background-color: #222;
     color: white;

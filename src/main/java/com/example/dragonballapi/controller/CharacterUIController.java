@@ -64,6 +64,29 @@ public class CharacterUIController {
         return "new-character-form";
     }
 
+    @GetMapping("/characters/{id}/edit")
+    public String editCharacterForm(@PathVariable long id, Model model) {
+        TvCharacter character = service.getCharacterById(id)
+            .orElseThrow(() -> new RuntimeException("Character not found"));
+
+        model.addAttribute("character", character);
+        return "new-character-form";
+    }
+
+    @PostMapping("/characters/{id}")
+    public String updateCharacter(
+            @PathVariable long id,
+            @ModelAttribute TvCharacter character,
+            RedirectAttributes redirectAttributes) {
+
+        service.updateCharacter(id, character);
+
+        redirectAttributes.addFlashAttribute(
+            "successMessage", "Character updated successfully!");
+
+        return "redirect:/characters/" + id;
+    }
+
     @PostMapping("/characters")
     public String addCharacter(
         @ModelAttribute TvCharacter character,
