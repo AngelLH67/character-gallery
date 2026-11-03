@@ -52,10 +52,21 @@
                 </#if>
             </section>
 
-            <div class="details-buttons">
-                <a class="button" href="/characters/${character.characterId}/edit">Edit Character</a>
-                <a class="button" href="/">Back to Gallery</a>
-            </div>
+            <#if character.characterId !=3>
+                <div class="details-buttons">
+                    <a class="button" href="/characters/${character.characterId}/edit">Edit Character</a>
+                    <a class="button" href="/">Back to Gallery</a>
+
+                    <form action="/characters/${character.characterId}/delete" method="post"
+                        onsubmit="return confirm('Are you sure you want to delete this character?');">
+                        <button type="submit" class="button">Delete Character</button>
+                    </form>
+                </div>
+                <#else>
+                    <div class="details-buttons">
+                        <a class="button" href="/">Back to Gallery</a>
+                    </div>
+            </#if>
 
         </main>
 

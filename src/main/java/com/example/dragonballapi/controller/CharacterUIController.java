@@ -87,6 +87,19 @@ public class CharacterUIController {
         return "redirect:/characters/" + id;
     }
 
+    @PostMapping("/characters/{id}/delete")
+    public String deleteCharacter(
+            @PathVariable long id,
+            RedirectAttributes redirectAttributes) {
+
+        service.deleteCharacter(id);
+
+        redirectAttributes.addFlashAttribute(
+            "successMessage", "Character deleted successfully!");
+
+        return "redirect:/?name=&universe=";
+    }
+
     @PostMapping("/characters")
     public String addCharacter(
         @ModelAttribute TvCharacter character,
