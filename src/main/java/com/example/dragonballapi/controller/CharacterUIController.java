@@ -4,13 +4,16 @@ package com.example.dragonballapi.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.dragonballapi.entity.TvCharacter;
@@ -79,6 +82,10 @@ public class CharacterUIController {
             @ModelAttribute TvCharacter character,
             RedirectAttributes redirectAttributes) {
 
+        if (service.getCharacterById(id).isEmpty()) {
+            throw new RuntimeException("Character not found");
+        }
+
         service.updateCharacter(id, character);
 
         redirectAttributes.addFlashAttribute(
@@ -91,6 +98,10 @@ public class CharacterUIController {
     public String deleteCharacter(
             @PathVariable long id,
             RedirectAttributes redirectAttributes) {
+
+        if (service.getCharacterById(id).isEmpty()) {
+            throw new RuntimeException("Character not found");
+        }
 
         service.deleteCharacter(id);
 
@@ -120,5 +131,11 @@ public class CharacterUIController {
 
         model.addAttribute("character", character);
         return "details";
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleNotFound() {
+        return "error";
     }
 }
