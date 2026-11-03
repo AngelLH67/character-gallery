@@ -16,7 +16,6 @@
 
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="/characters/3">Details</a>
                 <a href="/about">About</a>
                 <a href="/characters/new">Add a Character</a>
             </div>
